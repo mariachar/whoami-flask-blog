@@ -1,0 +1,63 @@
+{% include "header.html" %}
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('static/assets/img/luffy.png')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="page-heading">
+                            <h2>Fun Facts</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    {% for post in all_posts %}
+                  <div class="post-preview">
+                    <a href="{{ url_for('show_fun_facts_post', post_id=post.id) }}">
+                      <h2 class="post-title">{{ post.title }}</h2>
+                      <h3 class="post-subtitle">{{ post.subtitle }}</h3>
+                    </a>
+                    <p class="post-meta">
+                      Posted by
+                      <a href="#">{{post.author}}</a>
+                      on {{post.date}}
+                        {% if current_user.id == 1: %}
+                      <a href="{{url_for('delete_fun_post', post_id=post.id) }}">✘</a>
+                        {% endif %}
+                    </p>
+                  </div>
+                  <!-- Divider-->
+                  <hr class="my-4" />
+                  {% endfor %}
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                    <!-- Post preview-->
+
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                    <!-- Post preview-->
+
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                    <!-- Post preview-->
+
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                    <!-- New post -->
+                    <div class="d-flex justify-content-end mb-4">
+                    <a
+                      class="btn btn-primary float-right"
+                      href="{{url_for('add_fun_post')}}"
+                      >Create New Post</a>
+                    </div>
+                    <!-- Pager-->
+                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-default text-uppercase" href="#!">Older Posts →</a></div>
+                </div>
+            </div>
+        </div>
+
+{% include "footer.html" %}
