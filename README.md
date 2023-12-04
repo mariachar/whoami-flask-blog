@@ -56,18 +56,19 @@ Make sure you have the following installed on your machine:
    ```bash
    pip install -r requirements.txt
 
-4. Set up the database:
+3. Set up the database:
    ```bash
    flask db init
    flask db migrate
    flask db upgrade
 
-5. Configure the Application:
-   Open the config.py file and set the appropriate configurations, such as the database URL and secret key.
+4. Configure the Application:
+
+   Open the 'config.py' file and set the appropriate configurations, such as the database URL and secret key.
 
    Consider using environment variables for sensitive information.
 
-6. Run the Application:
+5. Run the Application:
    Start the Flask development server:
    ```bash
    flask run
