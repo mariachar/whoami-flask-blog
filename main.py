@@ -12,12 +12,13 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, cur
 from functools import wraps
 from sqlalchemy.orm import relationship
 from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
-from config import SECRET_KEY, SQLALCHEMY_DATABASE_URI,MY_EMAIL
+from config import SECRET_KEY, SQLALCHEMY_DATABASE_URI, MY_EMAIL
 
 CURRENT_YEAR = datetime.now().year
 
 MY_EMAIL = MY_EMAIL
 MY_PASSWORD = ""
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = SECRET_KEY
