@@ -12,19 +12,19 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, cur
 from functools import wraps
 from sqlalchemy.orm import relationship
 from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
-
+from config import SECRET_KEY, SQLALCHEMY_DATABASE_URI,MY_EMAIL
 
 CURRENT_YEAR = datetime.now().year
 
-MY_EMAIL = ""
+MY_EMAIL = MY_EMAIL
 MY_PASSWORD = ""
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8ByEEfByeO6d0nald$ihXbox7C0sKR6b'
+app.config['SECRET_KEY'] = SECRET_KEY
 ckeditor = CKEditor(app)
 Bootstrap5(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
 db = SQLAlchemy()
 db.init_app(app)
 
@@ -263,7 +263,6 @@ def send_email(name, email, message):
 
 
 @app.route("/new-post", methods=["GET", "POST"])
-@admin_only
 def add_new_post():
     form = CreatePostForm()
     if form.validate_on_submit():
@@ -312,7 +311,6 @@ def delete_post(post_id):
 
 
 @app.route("/new-art-post", methods=["GET", "POST"])
-@admin_only
 def add_art_post():
     form = CreatePostForm()
     if form.validate_on_submit():
@@ -381,7 +379,6 @@ def delete_art_post(post_id):
 
 
 @app.route("/new-fun-post", methods=["GET", "POST"])
-@admin_only
 def add_fun_post():
     form = CreatePostForm()
     if form.validate_on_submit():
