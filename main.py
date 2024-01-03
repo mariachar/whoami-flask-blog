@@ -13,6 +13,7 @@ from functools import wraps
 from sqlalchemy.orm import relationship
 from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
 from config import SECRET_KEY, SQLALCHEMY_DATABASE_URI, MY_EMAIL
+import os
 
 CURRENT_YEAR = datetime.now().year
 
@@ -450,4 +451,4 @@ def delete_fun_post(post_id):
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
-    app.run(debug=True, port=5001)
+    app.run(debug=False)
