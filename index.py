@@ -12,7 +12,7 @@ from flask_login import UserMixin, login_user, LoginManager, current_user, logou
 from functools import wraps
 from sqlalchemy.orm import relationship
 from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
-from config import MY_EMAIL
+from config import MY_EMAIL, SECRET_KEY
 import os
 
 CURRENT_YEAR = datetime.now().year
