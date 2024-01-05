@@ -14,7 +14,6 @@ from sqlalchemy.orm import relationship
 from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
 from config import MY_EMAIL
 import os
-from config import SECRET_KEY
 
 CURRENT_YEAR = datetime.now().year
 
@@ -23,7 +22,7 @@ MY_PASSWORD = ""
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = SECRET_KEY
+app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
 ckeditor = CKEditor(app)
 Bootstrap5(app)
 
