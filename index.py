@@ -12,13 +12,13 @@ from flask_login import UserMixin, login_user, LoginManager, current_user, logou
 from functools import wraps
 from sqlalchemy.orm import relationship
 from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
-#from config import MY_EMAIL, SECRET_KEY
+from config import MY_EMAIL
 import os
 
 CURRENT_YEAR = datetime.now().year
 
-#MY_EMAIL = MY_EMAIL
-#MY_PASSWORD = ""
+MY_EMAIL = MY_EMAIL
+
 
 
 app = Flask(__name__)
@@ -26,7 +26,7 @@ app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
 ckeditor = CKEditor(app)
 Bootstrap5(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DB_URI", "postgresql://whoamidb_ykc3_user:xpAaJsMzVIT3jcD6lFCTi8pKRU6pIv6c@dpg-cmampced3nmc73cshglg-a/whoamidb_ykc3")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DB_URI", "sqlite:///posts.db")
 db = SQLAlchemy()
 db.init_app(app)
 
